@@ -1,5 +1,5 @@
 This python based project will create a docker container
-and deploy it to AWS Lambda.
+and deploy it to AWS Lambda using the AWS CLI (instructions below)
 
 Invoking the function will return network speed information.
 
@@ -7,7 +7,7 @@ The netspeed-test.py code will loop through AWS Lambda memory
 sizes and output the results of the speed test for each iteration.
 
 Requirements:
-Docker, Python3, Boto3, Virtualenv
+Docker, Python3, Boto3, Virtualenv, AWS CLI
 
 ```
 region=us-west-2
