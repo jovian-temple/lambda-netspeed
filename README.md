@@ -1,4 +1,15 @@
- ```
+This python based project will create a docker container
+and deploy it to AWS Lambda.
+
+Invoking the function will return network speed information.
+
+The netspeed-test.py code will loop through AWS Lambda memory
+sizes and output the results of the speed test for each iteration.
+
+Requirements:
+Docker, Python3, Boto3, Virtualenv
+
+```
 region=us-west-2
 aws configure set region $region
 
