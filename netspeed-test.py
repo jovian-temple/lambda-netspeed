@@ -5,7 +5,7 @@ client = boto3.client("lambda")
 
 
 print("Running Test..")
-print("Memory, download, upload, vcpu")
+print("Memory, download (MB), upload (MB), vcpu")
 
 for memorysize in range(256, 10*1024, int((10*1024-256)/5)):
 
