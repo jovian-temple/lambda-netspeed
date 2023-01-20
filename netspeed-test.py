@@ -3,8 +3,8 @@ import json
 
 client = boto3.client("lambda")
 
-print("Running Test")
-print("Memoory, download, upload")
+print("Running Test..")
+print("Memory, download, upload")
 
 for memorysize in range(256, 10*1024, int((10*1024-256)/5)):
 
