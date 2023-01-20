@@ -3,8 +3,9 @@ import json
 
 client = boto3.client("lambda")
 
+
 print("Running Test..")
-print("Memory, download, upload")
+print("Memory, download, upload, vcpu")
 
 for memorysize in range(256, 10*1024, int((10*1024-256)/5)):
 
@@ -22,4 +23,5 @@ for memorysize in range(256, 10*1024, int((10*1024-256)/5)):
 
     response_payload = json.loads(response['Payload'].read().decode("utf-8"))
     body = json.loads(response_payload['body'])
-    print(body['memory_limit_in_mb'], body['download'],  body['upload'], sep=", ")
+    print(body['memory_limit_in_mb'], body['download'],  body['upload'],  body['vcpu'], sep=", ")
+
