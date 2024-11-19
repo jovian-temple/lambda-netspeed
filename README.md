@@ -30,22 +30,22 @@ registryId=$(aws ecr describe-repositories --repository-name netspeed --query "r
 
 aws ecr get-login-password --region $region | docker login --username AWS --password-stdin $registryId.dkr.ecr.$region.amazonaws.com 
 
-docker tag  netspeed:latest $registryId.dkr.ecr.$region.amazonaws.com/netspeed:latest
 
 docker push $registryId.dkr.ecr.$region.amazonaws.com/netspeed:latest        
 
 aws iam create-role --role-name LambdaBasicExecutionRole --assume-role-policy-document file://LambdaBasicExecutionRole-Trust-Policy.json
 
-aws iam attach-role-policy --policy arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole --role-name LambdaBasicExecutionRole
+aws iam attach-role-poldocker tag  netspeed:latest $registryId.dkr.ecr.$region.amazonaws.com/netspeed:latest
+icy --policy arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole --role-name LambdaBasicExecutionRole
 
 ; --architectures x86_64 | arm64
 aws lambda create-function --function-name netspeed \
     --package-type Image  \
     --timeout 60 \
-    --architectures x86_64 \
+    --architectures arm64 \
     --memory-size 256 \
     --code ImageUri=$registryId.dkr.ecr.$region.amazonaws.com/netspeed:latest  \
-    --role arn:aws:iam::$registryId":role/LambdaBasicExecutionRole"
+    --role arn:aws:iam::$registryId":role/LambdaBasicExecutionRole" 
 
 aws lambda wait function-exists --function-name netspeed
 
@@ -68,4 +68,5 @@ https://docs.aws.amazon.com/lambda/latest/dg/images-create.html
 https://docs.aws.amazon.com/lambda/latest/dg/troubleshooting-deployment.html
 
 pip install speedtest-cli
+aws lambda delete-function --function-name netspeed -
  ```
