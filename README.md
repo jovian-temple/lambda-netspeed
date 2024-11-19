@@ -22,7 +22,7 @@ source venv/bin/activate
 
 chmod -R o+rX .
 
-docker build -t netspeed .
+docker build -t netspeed . --provenance=false   
 
 aws ecr create-repository --repository-name netspeed --image-scanning-configuration scanOnPush=true --image-tag-mutability MUTABLE
 
